@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnaka <rnaka@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 20:33:55 by rnaka             #+#    #+#             */
-/*   Updated: 2023/02/27 13:16:06y rnaka            ###   ########.fr       */
+/*   Created: 2023/02/27 15:45:46 by rnaka             #+#    #+#             */
+/*   Updated: 2023/02/27 15:46:31 by rnaka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#ifndef TEST_H
+#define TEST_H
 
-int	main(int argc, char const *argv[])
-{
+#include <libc.h>
+#include <stdio.h>
+#include <ctype.h>
 
-	if (arg_check(argv))
-		return (1);
-	return (0);
-}
+int	arg_check(const char *argv[]);
+
+#endif

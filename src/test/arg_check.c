@@ -6,20 +6,19 @@
 /*   By: rnaka <rnaka@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:32:30 by rnaka             #+#    #+#             */
-/*   Updated: 2023/02/27 15:27:01 by rnaka            ###   ########.fr       */
+/*   Updated: 2023/02/27 15:57:56 by rnaka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
+#include "test.h"
 
-int	arg_chek_char(const char *argv[])
+static int	arg_chek_char(const char *argv[])
 {
 	int	i;
 	int	j;
 	int	flag;
 
-	i = 0;
+	i = 1;
 	j = 0;
 	flag = 0;
 	while (argv[i])
@@ -28,13 +27,14 @@ int	arg_chek_char(const char *argv[])
 		{
 			if ((argv[i][j] == '-' || argv[i][j] == '+') && flag)
 			{
-				write("error", 0, 6);
+				write(0, "error\n", 7);
 				return (1);
 			}
 			if (argv[i][j] == '-' || argv[i][j] == '+')
 				flag++;
 			j++;
 		}
+		j = 0;
 		flag = 0;
 		i++;
 	}
@@ -55,7 +55,7 @@ int	arg_check(const char *argv[])
 			if (!(isspace(argv[i][j]) || isdigit(argv[i][j]) \
 			|| argv[i][j] == '-' || argv[i][j] == '+'))
 			{
-				write("error", 0, 6);
+				write(0, "error\n", 7);
 				return (1);
 			}
 			j++;
