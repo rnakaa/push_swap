@@ -19,14 +19,15 @@ static int	arg_chek_char(char *argv[])
 
 	i = 0;
 	j = 0;
-	printf("%s\n", argv[i]);
 	while (argv[i])
 	{
 		while (argv[i][j])
 		{
+			printf("%c\n", argv[i][j]);
 			if (!isdigit(argv[i][j]) \
 			&& !((argv[i][0] == '-' \
-			|| argv[i][0] == '+') && ft_strlen(argv[i]) > 1))
+			|| argv[i][0] == '+') && !(j > 0 \
+			&& !isdigit(argv[i][j])) && ft_strlen(argv[i]) > 1))
 			{
 				return (1);
 			}
@@ -39,7 +40,7 @@ static int	arg_chek_char(char *argv[])
 }
 
 //split->ft_split
-static char	**arg_split(int *argc, const char *argv[], int *flag)
+static char	**arg_split(const char *argv[], int *flag)
 {
 	char	**ingredient;
 
@@ -70,13 +71,14 @@ int	arg_check(int argc, const char *argv[])
 	if (argc >= 3)
 		ingredient = (char **)argv + 1;
 	if (argc == 2)
-		ingredient = arg_split(&argc, argv, &flag);
+		ingredient = arg_split(argv, &flag);
 	if (arg_chek_char(ingredient))
 	{
-		if (flag != 0)
+		if (argc == 2)
 			free_double_pointer(ingredient);
 		write(0, "error\n", 7);
 		return (1);
 	}
+	free_double_pointer(ingredient);
 	return (0);
 }

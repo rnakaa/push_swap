@@ -6,7 +6,7 @@
 #    By: rnaka <rnaka@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 09:46:50 by rnaka             #+#    #+#              #
-#    Updated: 2023/03/03 11:22:26 by rnaka            ###   ########.fr        #
+#    Updated: 2023/03/07 11:49:19 by rnaka            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,13 @@ SRCS    = 	ft_strdup.c\
 			ft_substr.c\
 			test.c
 OBJS    = $(SRCS:.c=.o)
+
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
+
+all: $(OBJS)
+	gcc $(CFLAGS) -o push_swap $(OBJS)
+
 test:$(SRCS)
 	gcc -o $@ $^
 clean:	
